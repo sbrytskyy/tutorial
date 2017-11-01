@@ -2,6 +2,22 @@ package com.sb.test;
 import java.util.Random;
 
 public class BitwiseTest {
+	
+	public void testSwap(int a, int b) {
+		System.out.println(a + ":" + b);
+		System.out.println("a: " + String.format("%32s", Integer.toBinaryString(a)).replace(' ', '0'));
+		System.out.println("b: " + String.format("%32s", Integer.toBinaryString(b)).replace(' ', '0'));
+		System.out.println();
+		
+		a ^= b;
+		System.out.println("a: " + String.format("%32s", Integer.toBinaryString(a)).replace(' ', '0'));
+		b ^= a;
+		System.out.println("b: " + String.format("%32s", Integer.toBinaryString(b)).replace(' ', '0'));
+		a ^= b;
+		System.out.println("a: " + String.format("%32s", Integer.toBinaryString(a)).replace(' ', '0'));
+		
+		System.out.println(a + ":" + b);
+	}
 
 	public void testIntDiv() {
 		Random r = new Random();
@@ -119,6 +135,7 @@ public class BitwiseTest {
 	
 	public static void main(String[] args) {
 		BitwiseTest t = new BitwiseTest();
-		t.testShifts();
+//		t.testShifts();
+		t.testSwap(15, 73);
 	}
 }
