@@ -88,7 +88,7 @@ public class RedisUtils {
 //
 	
 	public synchronized void storeHashMap(String mapName, Map<String, Set<String>> map) {
-		log.debug("[SB] RedisStorageImpl::storeHashMap");
+//		log.debug("[SB] RedisStorageImpl::storeHashMap");
 		
 		jedis.del(mapName); // clear if exists
 		for (String key: map.keySet()) {
@@ -101,7 +101,7 @@ public class RedisUtils {
 	}
 
 	public synchronized Map<String, Set<String>> retrieveHashMap(String mapName) {
-		log.debug("[SB] RedisStorageImpl::retrieveHashMap");
+//		log.debug("[SB] RedisStorageImpl::retrieveHashMap");
 		Map<String, Set<String>> map = new HashMap<>();
 
 		Set<String> keys = jedis.smembers(mapName);

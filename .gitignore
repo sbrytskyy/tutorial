@@ -1,5 +1,6 @@
 .metadata
 .recommenders
-/target
-/bin
-Test/logs
+bin/
+logs/
+target/
+RemoteSystemsTempFiles

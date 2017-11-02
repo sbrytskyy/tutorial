@@ -54,9 +54,9 @@ public class Application {
 		int totalNodeSize = 1000;
 		
 		if (newTokensCount < 50 || newTokensCount < totalNodeSize / 2) {
-			log.debug("Passed");
+			System.out.println("Passed");
 		} else {
-			log.debug("Failed");
+			System.out.println("Failed");
 		}
 		
 	}
@@ -80,8 +80,8 @@ public class Application {
 		//// s3.add("7");
 		// map.put("192.168.0.3", s3);
 		//
-		// log.debug("[SB] map init ----------------------");
-		// map.entrySet().stream().forEach(e -> log.debug("\t{} -> [{}]",
+		// System.out.println("[SB] map init ----------------------");
+		// map.entrySet().stream().forEach(e -> System.out.println("\t{} -> [{}]",
 		// e.getKey(), String.join(",", e.getValue())));
 		//
 		// ru.storeHashMap(mapName, map);
@@ -89,13 +89,13 @@ public class Application {
 		// String mapName = "tokensForNodes";
 		Map<String, Set<String>> map2 = ru.retrieveHashMap(mapName);
 
-		log.debug("[SB] map 2 ----------------------: " + map2.size());
+		System.out.println("[SB] map 2 ----------------------: " + map2.size());
 		for (String key : map2.keySet()) {
 			Set<String> set = map2.get(key);
-			log.debug("\t{} -> [{}]", key, String.join(",", set));
+			System.out.format("\t{} -> [{}]", key, String.join(",", set));
 		}
-		map2.entrySet().stream().forEach(e -> log.debug(e.toString()));
-		log.debug("[SB] ----------------------------");
+		map2.entrySet().stream().forEach(e -> System.out.println(e.toString()));
+		System.out.println("[SB] ----------------------------");
 
 	}
 
@@ -116,14 +116,14 @@ public class Application {
 		// s3.add("7");
 		map.put("192.168.0.3", s3);
 
-		log.debug("[SB] map init ----------------------");
-		map.entrySet().stream().forEach(e -> log.debug("\t{} -> [{}]", e.getKey(), String.join(",", e.getValue())));
+		System.out.println("[SB] map init ----------------------");
+		map.entrySet().stream().forEach(e -> System.out.format("\t{} -> [{}]", e.getKey(), String.join(",", e.getValue())));
 
 		String leastLoadedNode = findLeastLoadedNode(map);
-		log.debug("[SB] leastLoadedNode: " + leastLoadedNode);
+		System.out.println("[SB] leastLoadedNode: " + leastLoadedNode);
 		
 		int totalNodeSize = findTotalNodeSize(map);
-		log.debug("[SB] totalNodeSize: " + totalNodeSize);
+		System.out.println("[SB] totalNodeSize: " + totalNodeSize);
 	}
 
 	public static <K, V extends Collection<?>> int findTotalNodeSize(Map<K, V> map) {
@@ -168,21 +168,21 @@ public class Application {
 		// s3.add("7");
 		map.put("192.168.0.3", s3);
 
-		log.debug("[SB] map init ----------------------");
-		map.entrySet().stream().forEach(e -> log.debug("\t{} -> [{}]", e.getKey(), String.join(",", e.getValue())));
+		System.out.println("[SB] map init ----------------------");
+		map.entrySet().stream().forEach(e -> System.out.format("\t{} -> [{}]", e.getKey(), String.join(",", e.getValue())));
 
 		ru.storeHashMap(mapName, map);
 
 		// String mapName = "tokensForNodes";
 		Map<String, Set<String>> map2 = ru.retrieveHashMap(mapName);
 
-		log.debug("[SB] map 2 ----------------------: " + map2.size());
+		System.out.println("[SB] map 2 ----------------------: " + map2.size());
 		for (String key : map2.keySet()) {
 			Set<String> set = map2.get(key);
-			log.debug("\t{} -> [{}]", key, String.join(",", set));
+			System.out.format("\t{} -> [{}]", key, String.join(",", set));
 		}
-		map2.entrySet().stream().forEach(e -> log.debug(e.toString()));
-		log.debug("[SB] ----------------------------");
+		map2.entrySet().stream().forEach(e -> System.out.println(e.toString()));
+		System.out.println("[SB] ----------------------------");
 
 		client.shutdown();
 	}
@@ -253,13 +253,13 @@ public class Application {
 
 		sensors.add(null);
 
-		sensors.stream().filter(Objects::nonNull)
-				.collect(Collectors.toMap(ConnectedSensorDTO::getSerial,
-						sensor -> sensor.getProperties().stream()
-								.collect(Collectors.toMap(PropertyDTO::getName, PropertyDTO::getValue))))
-				.entrySet().forEach(entry -> {
-					System.out.format("[processSuccess] key: {}; value: {}", entry.getKey(), entry.getValue());
-				});
+//		sensors.stream().filter(Objects::nonNull)
+//				.collect(Collectors.toMap(ConnectedSensorDTO::getSerial,
+//						sensor -> sensor.getProperties().stream()
+//								.collect(Collectors.toMap(PropertyDTO::getName, PropertyDTO::getValue))))
+//				.entrySet().forEach(entry -> {
+//					System.out.format("[processSuccess] key: {}; value: {}", entry.getKey(), entry.getValue());
+//				});
 	}
 }
 
