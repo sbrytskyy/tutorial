@@ -12,7 +12,7 @@ public class RedisPublisher {
 
 	public static void main(String[] args) {
 		// Connecting to Redis server on localhost
-		Jedis jedis = new Jedis("68.128.180.159", 6379);
+		Jedis jedis = new Jedis("localhost", 6379);
 		System.out.println("Connection to server sucessfully");
 		// check whether server is running or not
 		System.out.println("Server is running: " + jedis.ping());
@@ -41,19 +41,19 @@ public class RedisPublisher {
 			System.out.println("List of stored keys:: " + it.next());
 		}
 
-		// lets do some stress
-		Pipeline pipeline = jedis.pipelined();
-		
-		Random r = new Random();
-		for (int i = 0; i < 24000000; i++) {
-			String message = "Test Redis Message " + String.format("%010d", Math.abs(r.nextInt()));
-
-			pipeline.lpush("vz/iot/lwm2m", message);
-			if (i % 10000 == 0) {
-				System.out.println(" [x] Sent '" + message + "'");
-			}
-		}
-		pipeline.sync();
+//		// lets do some stress
+//		Pipeline pipeline = jedis.pipelined();
+//		
+//		Random r = new Random();
+//		for (int i = 0; i < 24000000; i++) {
+//			String message = "Test Redis Message " + String.format("%010d", Math.abs(r.nextInt()));
+//
+//			pipeline.lpush("vz/iot/lwm2m", message);
+//			if (i % 10000 == 0) {
+//				System.out.println(" [x] Sent '" + message + "'");
+//			}
+//		}
+//		pipeline.sync();
 
 		Long llen = jedis.llen("vz/iot/lwm2m");
 		System.out.println("Stored items in redis list:: " + llen);
