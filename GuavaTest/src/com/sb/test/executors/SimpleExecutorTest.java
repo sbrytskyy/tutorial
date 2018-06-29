@@ -55,6 +55,8 @@ public class SimpleExecutorTest {
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
+		
+		service.shutdown();
 	}
 
 	public static void main(String[] args) {

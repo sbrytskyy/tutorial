@@ -1,6 +1,7 @@
 package com.sb.test.executors;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -19,8 +20,8 @@ public class GuavaExecutorTestClean {
 		@Override
 		public String call() throws Exception {
 			String threadName = Thread.currentThread().getName();
-			for (int i = 0; i < 4; i++) {
-				System.out.println("taskCallable: " + i + ", " + threadName);
+			for (int i = 0; i < 20; i++) {
+				Thread.sleep(100);
 			}
 			return threadName;
 		}
@@ -46,6 +47,17 @@ public class GuavaExecutorTestClean {
 	public void test() {
 		ListenableFuture<String> listenableFutureCallable = service.submit(taskCallable);
 		Futures.addCallback(listenableFutureCallable, futureCallback, service);
+
+		System.out.println("Waiting for result");
+
+		try {
+			String result = listenableFutureCallable.get();
+			System.out.println("Result: " + result);
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+		
+		service.shutdown();
 	}
 
 	public static void main(String[] args) {

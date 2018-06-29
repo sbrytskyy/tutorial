@@ -116,6 +116,8 @@ public class GuavaExecutorTest {
 			}
 		};
 		Futures.addCallback(listenableFutureCallable, futureCallback, service);
+		
+		service.shutdown();
 	}
 
 	public static void main(String[] args) {
