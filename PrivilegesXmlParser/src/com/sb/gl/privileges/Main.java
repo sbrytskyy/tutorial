@@ -105,7 +105,8 @@ public class Main {
 //					System.out.println("No privileges used");
 					continue;
 				}
-				System.out.println("file:/" + key);
+				System.out.println("https://cs.corp.google.com/piper///depot/" + key.substring(key.indexOf("google3"))
+						+ "?q=PrivilegesSchema");
 				String s = key.substring(0, key.indexOf(suffix) - 1);
 				s = s.substring(s.lastIndexOf('/') + 1);
 				System.out.println(s);
