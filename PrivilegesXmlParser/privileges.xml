@@ -1,0 +1,374 @@
+<PrivilegesSchema>
+	<Privilege OuScopeable="true" id="ORGS_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="ORGS_PROVISIONING_API_NAME" />
+	</Privilege>
+	<Privilege AdminProtected="true" OuScopeable="true"
+		id="USERS_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="USERS_PROVISIONING_API_NAME" />
+	</Privilege>
+	<Privilege OuScopeable="false"
+		id="GROUPS_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="GROUPS_PROVISIONING_API_NAME" />
+	</Privilege>
+	<Privilege AdminProtected="true" OuScopeable="true"
+		id="APPS_SECURITY_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="APPS_SECURITY_PROVISIONING_API_NAME" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="ROLES_API_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="SUPPORT_API_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="CERTIFICATES_API_PRIVILEGE_GROUP" />
+	<Privilege OuScopeable="false"
+		id="DATATRANSFER_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="DATA_TRANSFER_DISPLAY_NAME" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="LDAP_API_PRIVILEGE_GROUP" />
+	<!-- Proposed in Dasher and Domains Sharing. See go/domainssharing. -->
+	<Privilege Delegatable="true" OuScopeable="false"
+		id="DOMAIN_REGISTRATION_MANAGEMENT" />
+	<!-- Third party app management -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="THIRD_PARTY_APP_MANAGEMENT" />
+	<!-- ThirdPartyUserImpersonationSettingsProto -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="THIRD_PARTY_USER_IMPERSONATION_SETTINGS_PROTO" />
+	<!-- Orgs Api -->
+	<Privilege OuScopeable="true"
+		ParentId="ORGS_API_PRIVILEGE_GROUP" id="ORGS_CREATE_PRIVILEGE_GROUP">
+		<DisplayName msgId="CREATE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="ORGS_CREATE_PRIVILEGE_GROUP" id="ORGS_CREATE" />
+	<Privilege OuScopeable="true"
+		ParentId="ORGS_API_PRIVILEGE_GROUP" id="ORGS_RETRIEVE_PRIVILEGE_GROUP">
+		<DisplayName msgId="RETRIEVE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="ORGS_RETRIEVE_PRIVILEGE_GROUP" id="ORGS_RETRIEVE" />
+	<Privilege OuScopeable="true"
+		ParentId="ORGS_API_PRIVILEGE_GROUP" id="ORGS_UPDATE_PRIVILEGE_GROUP">
+		<DisplayName msgId="UPDATE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="ORGS_UPDATE_PRIVILEGE_GROUP" id="ORGS_UPDATE" />
+	<Privilege OuScopeable="true"
+		ParentId="ORGS_API_PRIVILEGE_GROUP" id="ORGS_DELETE_PRIVILEGE_GROUP">
+		<DisplayName msgId="DELETE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="ORGS_DELETE_PRIVILEGE_GROUP" id="ORGS_DELETE" />
+	<!-- Users Api -->
+	<Privilege OuScopeable="true"
+		ParentId="USERS_API_PRIVILEGE_GROUP" id="USERS_CREATE_PRIVILEGE_GROUP">
+		<DisplayName msgId="CREATE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="USERS_CREATE_PRIVILEGE_GROUP" id="USERS_CREATE" />
+	<Privilege OuScopeable="true"
+		ParentId="USERS_API_PRIVILEGE_GROUP"
+		id="USERS_RETRIEVE_PRIVILEGE_GROUP">
+		<DisplayName msgId="RETRIEVE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="USERS_RETRIEVE_PRIVILEGE_GROUP" id="USERS_RETRIEVE" />
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_API_PRIVILEGE_GROUP" id="USERS_UPDATE_PRIVILEGE_GROUP">
+		<DisplayName msgId="UPDATE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_UPDATE" />
+	<!-- BEGIN Update User Finer Privileges -->
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_RENAME_USER_PRIVILEGE_GROUP">
+		<DisplayName msgId="RENAME_USER_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="USERS_RENAME_USER_PRIVILEGE_GROUP"
+		id="USERS_RENAME_USER" />
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_MOVE_USER_PRIVILEGE_GROUP">
+		<DisplayName msgId="MOVE_USER_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="USERS_MOVE_USER_PRIVILEGE_GROUP"
+		id="USERS_MOVE_USER" />
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_RESET_PASSWORD_USER_PRIVILEGE_GROUP">
+		<DisplayName msgId="RESET_PASSWORD_USER_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true"
+		ParentId="USERS_RESET_PASSWORD_USER_PRIVILEGE_GROUP"
+		id="USERS_RESET_PASSWORD_USER" />
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_FORCE_PASSWORD_CHANGE_USER_PRIVILEGE_GROUP">
+		<DisplayName
+			msgId="FORCE_PASSWORD_CHANGE_USER_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true"
+		ParentId="USERS_FORCE_PASSWORD_CHANGE_USER_PRIVILEGE_GROUP"
+		id="USERS_FORCE_PASSWORD_CHANGE_USER" />
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_ADD_NICKNAME_USER_PRIVILEGE_GROUP">
+		<DisplayName msgId="ADD_NICKNAME_USER_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="USERS_ADD_NICKNAME_USER_PRIVILEGE_GROUP"
+		id="USERS_ADD_NICKNAME_USER" />
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_UPDATE_PRIVILEGE_GROUP"
+		id="USERS_SUSPEND_USER_PRIVILEGE_GROUP">
+		<DisplayName msgId="SUSPEND_USER_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="USERS_SUSPEND_USER_PRIVILEGE_GROUP"
+		id="USERS_SUSPEND_USER" />
+	<!-- END Update User Finer Privileges -->
+	<Privilege AdminProtected="true" OuScopeable="true"
+		ParentId="USERS_API_PRIVILEGE_GROUP" id="USERS_DELETE_PRIVILEGE_GROUP">
+		<DisplayName msgId="DELETE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="USERS_DELETE_PRIVILEGE_GROUP"
+		id="USERS_DELETE" />
+	<Privilege Delegatable="false" id="USERS_CHANGE_CUSTOMER" />
+	<Privilege Delegatable="false" id="USERS_CHANGE_ADMIN_STATUS" />
+	<Privilege Delegatable="false" id="USERS_UNDELETE" />
+	<!-- UserSchema Api -->
+	<Privilege OuScopeable="false" id="SCHEMA_MANAGEMENT">
+		<DisplayName msgId="SCHEMA_PROVISIONING" />
+	</Privilege>
+	<Privilege OuScopeable="false" ParentId="SCHEMA_MANAGEMENT"
+		id="SCHEMA_RETRIEVE">
+		<DisplayName msgId="SCHEMA_PROVISIONING_READONLY" />
+	</Privilege>
+	<!-- Groups Api -->
+	<Privilege OuScopeable="false"
+		ParentId="GROUPS_API_PRIVILEGE_GROUP"
+		id="GROUPS_CREATE_PRIVILEGE_GROUP">
+		<DisplayName msgId="CREATE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="GROUPS_CREATE_PRIVILEGE_GROUP" id="GROUPS_CREATE" />
+	<Privilege OuScopeable="false"
+		ParentId="GROUPS_API_PRIVILEGE_GROUP"
+		id="GROUPS_RETRIEVE_PRIVILEGE_GROUP">
+		<DisplayName msgId="RETRIEVE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="GROUPS_RETRIEVE_PRIVILEGE_GROUP" id="GROUPS_RETRIEVE" />
+	<Privilege OuScopeable="false"
+		ParentId="GROUPS_API_PRIVILEGE_GROUP"
+		id="GROUPS_UPDATE_PRIVILEGE_GROUP">
+		<DisplayName msgId="UPDATE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="GROUPS_UPDATE_PRIVILEGE_GROUP" id="GROUPS_UPDATE" />
+	<Privilege OuScopeable="false"
+		ParentId="GROUPS_API_PRIVILEGE_GROUP"
+		id="GROUPS_DELETE_PRIVILEGE_GROUP">
+		<DisplayName msgId="DELETE_PRIVILIGE_ID" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="GROUPS_DELETE_PRIVILEGE_GROUP" id="GROUPS_DELETE" />
+	<Privilege Delegatable="false" id="GROUPS_CHANGE_CUSTOMER" />
+	<!-- UserInvite Api -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="USER_INVITE_MANAGEMENT" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="USER_INVITE_MANAGEMENT" id="USER_INVITE_CREATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="USER_INVITE_DELETE" />
+	<!-- Security Api -->
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_2SV_BACKUP_CODES_API_PRIVILEGE_GROUP">
+		<DisplayName
+			msgId="APPS_SECURITY_2SV_BACKUP_CODES_API_NAME" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_3LO_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="APPS_SECURITY_3LO_API_NAME" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_ASP_API_PRIVILEGE_GROUP">
+		<DisplayName msgId="APPS_SECURITY_ASP_API_NAME" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_LOGIN_CHALLENGE_API_PRIVILEGE_GROUP" />
+	<!-- 2SV Backup Codes -->
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_2SV_BACKUP_CODES_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_2SV_BACKUP_CODES_RETRIEVE_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_2SV_BACKUP_CODES_RETRIEVE_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_2SV_BACKUP_CODES_RETRIEVE" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true"
+		ParentId="APPS_SECURITY_2SV_BACKUP_CODES_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_2SV_BACKUP_CODES_UPDATE_PRIVILEGE_GROUP" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true"
+		ParentId="APPS_SECURITY_2SV_BACKUP_CODES_UPDATE_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_2SV_BACKUP_CODES_UPDATE" />
+	<!-- 3LO -->
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_3LO_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_3LO_RETRIEVE_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_3LO_RETRIEVE_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_3LO_RETRIEVE" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_3LO_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_3LO_DELETE_PRIVILEGE_GROUP" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_3LO_DELETE_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_3LO_DELETE" />
+	<!-- ASP -->
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_ASP_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_ASP_RETRIEVE_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_ASP_RETRIEVE_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_ASP_RETRIEVE" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_ASP_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_ASP_DELETE_PRIVILEGE_GROUP" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_ASP_DELETE_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_ASP_DELETE" />
+	<!-- Login Challenge -->
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true"
+		ParentId="APPS_SECURITY_LOGIN_CHALLENGE_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_LOGIN_CHALLENGE_UNBLOCK" />
+	<!-- Security Keys -->
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_MANAGE_SECURITY_KEYS">
+		<DisplayName msgId="MANAGE_SECURITY_KEYS" />
+	</Privilege>
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_MANAGE_SECURITY_KEYS"
+		id="APPS_SECURITY_RETRIEVE_SECURITY_KEYS" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_MANAGE_SECURITY_KEYS"
+		id="APPS_SECURITY_DELETE_SECURITY_KEYS" />
+	<Privilege AdminProtected="true" Delegatable="false"
+		OuScopeable="true" ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APPS_SECURITY_RESET_USER_SESSIONS" />
+	<!-- 2SV status for the customer -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="APPS_SECURITY_2SV_STATUS" />
+	<!-- Roles API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="ROLES_API_PRIVILEGE_GROUP" id="MANAGE_ROLES" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="ROLES_API_PRIVILEGE_GROUP" id="MANAGE_SYSTEM_ROLES" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="MANAGE_ROLES" id="RETRIEVE_ROLES" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="MANAGE_ROLES" id="MANAGE_ROLE_ASSIGNMENTS" />
+	<!-- Support API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="SUPPORT_API_PRIVILEGE_GROUP" id="GENERATE_EPIN" />
+	<!-- Certificates Api -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CERTIFICATES_API_PRIVILEGE_GROUP"
+		id="CS_GENERATE_CERTIFICATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CERTIFICATES_API_PRIVILEGE_GROUP"
+		id="CS_RETRIEVE_CERTIFICATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CERTIFICATES_API_PRIVILEGE_GROUP" id="CS_DELETE_CERTIFICATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CERTIFICATES_API_PRIVILEGE_GROUP" id="CS_UPDATE_CERTIFICATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CERTIFICATES_API_PRIVILEGE_GROUP" id="CS_SIGN_MESSAGE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CERTIFICATES_API_PRIVILEGE_GROUP" id="CS_READ_PRIVATE_KEY" />
+	<!-- SAML2 SPConfig Api -->
+	<Privilege Delegatable="true" OuScopeable="false"
+		id="SAML2_SERVICE_PROVIDER" />
+	<!-- Policies API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="MANAGE_TWO_STEP_VERIFICATION_POLICY" />
+	<!-- Datatransfer API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="DATATRANSFER_API_PRIVILEGE_GROUP" id="DATATRANSFER_CREATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="DATATRANSFER_API_PRIVILEGE_GROUP" id="DATATRANSFER_RETRIEVE" />
+	<!-- Domains API -->
+	<Privilege Delegatable="true" OuScopeable="false"
+		id="DOMAIN_MANAGEMENT">
+		<DisplayName msgId="DOMAIN_MANAGEMENT_DISPLAY_NAME" />
+	</Privilege>
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="DOMAIN_MANAGEMENT" id="DOMAIN_MANAGEMENT_READ" />
+	<!-- Customer API -->
+	<Privilege Delegatable="true" OuScopeable="false"
+		id="UPGRADE_CONSUMER_CONVERSION" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="DELETE_CONSUMER_CONVERSION" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CONSUMER_CONVERSION_PROGRESS_WRITE"
+		id="CONSUMER_CONVERSION_PROGRESS_READ" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="CONSUMER_CONVERSION_PROGRESS_WRITE" />
+	<!-- AppAccessCollections API -->
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="APPS_SECURITY_API_PRIVILEGE_GROUP"
+		id="APP_ACCESS_MANAGEMENT" />
+	<!-- AdminIntelligence API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="INSIGHT_CARDS_READ" />
+	<!-- Dasher Customer Takeout API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CUSTOMER_TAKEOUT_API_WRITE" id="CUSTOMER_TAKEOUT_API_READ" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="CUSTOMER_TAKEOUT_API_WRITE"
+		id="CUSTOMER_TAKEOUT_API_GOOGLE_SUPPORT" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="CUSTOMER_TAKEOUT_API_WRITE" />
+	<!-- Long running operations API -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="READ_LONGRUNNING_OPERATION_STATUS" />
+	<!-- LDAP Service API -->
+	<!-- LDAP application management privileges -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="LDAP_API_PRIVILEGE_GROUP"
+		id="LDAP_MANAGEMENT_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="LDAP_MANAGEMENT_PRIVILEGE_GROUP" id="LDAP_MANAGEMENT_READ" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="LDAP_MANAGEMENT_PRIVILEGE_GROUP" id="LDAP_MANAGEMENT_CREATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="LDAP_MANAGEMENT_PRIVILEGE_GROUP" id="LDAP_MANAGEMENT_UPDATE" />
+	<Privilege Delegatable="false" OuScopeable="false"
+		ParentId="LDAP_MANAGEMENT_PRIVILEGE_GROUP" id="LDAP_MANAGEMENT_DELETE" />
+	<!-- LDAP auth rebind privileges -->
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="LDAP_API_PRIVILEGE_GROUP"
+		id="LDAP_PASSWORD_REBIND_PRIVILEGE_GROUP" />
+	<Privilege Delegatable="false" OuScopeable="true"
+		ParentId="LDAP_PASSWORD_REBIND_PRIVILEGE_GROUP"
+		id="LDAP_PASSWORD_REBIND" />
+	<!-- Dasher Customer to Consumer -->
+	<Privilege Delegatable="false" OuScopeable="false"
+		id="CUSTOMER_CONVERSION_WRITE" />
+	<!-- Dasher Reseller Platform privileges related to Strata -->
+	<Privilege Delegatable="false" id="ACCEPT_DAR_INVITE" />
+</PrivilegesSchema>
