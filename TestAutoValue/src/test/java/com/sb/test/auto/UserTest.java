@@ -8,7 +8,13 @@ public class UserTest {
 
 	@Test
 	public void testCreate() {
-		assertThat(User.create(1L, "test1")).isNotNull();
+		User user1 = User.create(1L, "test1");
+		assertThat(user1).isNotNull();
+		assertThat(user1.toString()).isEqualTo("User{id=1, name=test1, address=null}");
+
+		Address address = Address.create("SW Expy", "San Jose", "95126");
+		User user2 = User.create(1L, "test1", address);
+		assertThat(user2).isNotNull();
 	}
 
 	@Test
