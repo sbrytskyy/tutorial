@@ -1,6 +1,6 @@
 <factorypath>
-    <factorypathentry kind="EXTJAR" id="C:\projects\eclipse.addon\auto-value-1.6.4.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="C:\projects\eclipse.addon\guava-16.0.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="C:\projects\eclipse.addon\jsr305-3.0.2.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="C:\projects\eclipse.addon\auto-service-1.0-rc2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/TestAutoValue/eclipse/auto-service-1.0-rc2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/TestAutoValue/eclipse/auto-value-1.6.4.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/TestAutoValue/eclipse/guava-16.0.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/TestAutoValue/eclipse/jsr305-3.0.2.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

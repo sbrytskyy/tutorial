@@ -34,14 +34,5 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/serhiy.brytskyy/.m2/repository/com/google/guava/guava/16.0.1/guava-16.0.1.jar" sourcepath="C:/Users/serhiy.brytskyy/.m2/repository/com/google/guava/guava/16.0.1/guava-16.0.1-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.google.guava"/>
-			<attribute name="maven.artifactId" value="guava"/>
-			<attribute name="maven.version" value="16.0.1"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
