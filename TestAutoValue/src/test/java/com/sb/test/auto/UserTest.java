@@ -26,4 +26,10 @@ public class UserTest {
 	public void testName() {
 		assertThat(User.create(1L, "test1").name()).isEqualTo("test1");
 	}
+	
+	@Test
+	public void testContacts() {
+		Contacts contacts = Contacts.builder().setEmail("sbrytskyy@gmail.com").setPhone("+16692787184").build();
+		assertThat(Contacts.builder().setEmail("sbrytskyy@gmail.com").setPhone("+16692787184").build()).isEqualTo(contacts);
+	}
 }

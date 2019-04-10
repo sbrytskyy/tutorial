@@ -5,6 +5,25 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import com.google.auto.value.AutoValue;
 
 @AutoValue
+abstract class Contacts {
+	
+	abstract String email();
+	abstract String phone();
+	
+	static Builder builder() {
+		return new AutoValue_Contacts.Builder();
+	}
+	
+	@AutoValue.Builder
+	abstract static class Builder {
+		abstract Builder setEmail(String email);
+		abstract Builder setPhone(String phone);
+		
+		abstract Contacts build();
+	}
+}
+
+@AutoValue
 abstract class Address {
 	abstract String street();
 	abstract String city();
