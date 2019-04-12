@@ -1,8 +1,13 @@
 package com.sb.test.refs;
 
+import java.lang.ref.PhantomReference;
+import java.lang.ref.Reference;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
+
+import com.sb.test.refs.RefsTest.Counter;
 
 public class RefsTest implements Runnable {
 
@@ -25,15 +30,21 @@ public class RefsTest implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			testSoft();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			testWeakHashMap();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			testPhantom();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,7 +100,7 @@ public class RefsTest implements Runnable {
 
 		WeakHashMap<Counter, Integer> whm = new WeakHashMap<>();
 		whm.put(counter, counter.getCount());
-		
+
 		System.out.println("weakCounter: " + whm.get(counter));
 
 		counter = null;
@@ -100,6 +111,46 @@ public class RefsTest implements Runnable {
 
 		System.out.println("weakCounter: " + whm.get(counter));
 
+	}
+
+	private void testPhantom() {
+		System.out.println("Test PhantomReference");
+
+		ReferenceQueue<Counter> refQueue = new ReferenceQueue<>(); // reference will be stored in this queue for cleanup
+
+		Counter counter = new Counter(10);
+
+		PhantomReference<Counter> phantomCounter = new PhantomReference<Counter>(counter, refQueue);
+		System.out.println("phantomCounter: " + phantomCounter.get());
+
+		Reference<? extends Counter> reference;
+		while((reference = refQueue.poll()) != null) {
+			System.out.println("1. reference: " + reference);
+		}
+		
+		counter = null;
+
+		System.gc();
+
+		while((reference = refQueue.poll()) != null) {
+			System.out.println("2. reference: " + reference);
+		}
+
+		System.gc();
+
+		while((reference = refQueue.poll()) != null) {
+			System.out.println("3. reference: " + reference);
+		}
+		System.gc();
+
+		while((reference = refQueue.poll()) != null) {
+			System.out.println("4. reference: " + reference);
+		}
+		System.gc();
+
+		while((reference = refQueue.poll()) != null) {
+			System.out.println("5. reference: " + reference);
+		}
 	}
 
 	public static void main(String[] args) {
