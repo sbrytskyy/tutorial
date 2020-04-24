@@ -22,6 +22,25 @@ public abstract class Product extends Ingredient {
 		return Collections.unmodifiableMap(ingredientCounts);
 	}
 
+	private static void prettyPrintProduct(Product p, String prefix) {
+		System.out.print(prefix + String.format("%s => %d min; ", p.getName(), p.productionTime));
+		System.out.println(p.ingredientCounts);
+
+		for (Map.Entry<Ingredient, Integer> entry : p.ingredientCounts.entrySet()) {
+			if (entry.getKey() instanceof Product) {
+				prettyPrintProduct((Product) entry.getKey(), prefix + "\t");
+			} else {
+				System.out.println(prefix + "\t" + String.format("%s => %d", entry.getKey(), entry.getValue()));
+			}
+		}
+	}
+
+	public static void prettyPrintProduct(Product p) {
+		System.out.println("-*** PrettyPrintProduct ***-");
+		prettyPrintProduct(p, "");
+		System.out.println("-*** PrettyPrintProduct ***-");
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
