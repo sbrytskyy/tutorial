@@ -1,7 +1,7 @@
 package com.sb.klondike;
 
 public abstract class Ingredient {
-	
+
 	private final String name;
 
 	public Ingredient(String name) {
@@ -11,7 +11,7 @@ public abstract class Ingredient {
 	public String getName() {
 		return name;
 	}
-	
+
 	@Override
 	public String toString() {
 		return name;

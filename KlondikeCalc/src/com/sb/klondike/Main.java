@@ -11,9 +11,9 @@ public class Main {
 
 	private void run() {
 		Water p = Water.water();
-		
+
 		System.out.println(String.format("%s -> %d min", p.getName(), p.getProductionTime()));
-		
+
 		Map<Ingredient, Integer> ingredientCounts = p.getIngredientCounts();
 		System.out.println("\t" + ingredientCounts);
 	}

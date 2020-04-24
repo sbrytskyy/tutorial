@@ -8,13 +8,13 @@ public class Water extends Product {
 	private Water(String name, int productionTime, Map<Ingredient, Integer> ingredientCounts) {
 		super(name, productionTime, ingredientCounts);
 	}
-	
+
 	public static Water water() {
 		return new WaterBuilder().build();
 	}
 
 	public static class WaterBuilder extends ProductBuilder<Water> {
-		
+
 		@Override
 		public Water internalBuild() {
 			Map<Ingredient, Integer> ingredientCounts = new HashMap<>();

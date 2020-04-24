@@ -44,9 +44,9 @@ public abstract class Product extends Ingredient {
 		}
 
 		public T build() {
-            return internalBuild();
-        }
+			return internalBuild();
+		}
 
-        protected abstract T internalBuild();
+		protected abstract T internalBuild();
 	}
 }
