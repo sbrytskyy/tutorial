@@ -22,6 +22,14 @@ public abstract class Product extends Ingredient {
 		return Collections.unmodifiableMap(ingredientCounts);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%s => %d min, ", getName(), productionTime));
+		sb.append(ingredientCounts);
+		return sb.toString();
+	}
+
 	public abstract static class ProductBuilder<T extends Product> {
 
 		protected String name;
