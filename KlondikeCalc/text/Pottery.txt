@@ -1,0 +1,30 @@
+Pottery
+
+Mortar
+20
+
+Cement
+1
+Trowel
+1
+
+
+Bricks
+30
+
+Mortar
+1
+Fire
+3
+Quartz Sand
+1
+
+Tile
+60
+Mortar
+2
+Fire
+4
+Quartz Sand
+2
+

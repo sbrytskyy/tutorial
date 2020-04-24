@@ -1,0 +1,35 @@
+Smithy
+
+Nails
+15
+
+Iron Bar
+3
+Water
+1
+Hammer
+1
+
+
+Pipes
+30
+
+Iron Bar
+5
+Water
+3
+Hammer
+1
+
+
+Chains
+60
+
+Iron Bar
+3
+Pipes
+1
+Wood Veneer
+2
+
+

@@ -1,0 +1,50 @@
+Sawmill
+
+Wood Veneer
+3
+
+Sequoia Logs
+5
+Dry Twigs
+10
+
+
+Boards
+10
+
+Fir-tree Logs
+5
+Saw
+1
+
+
+Glue
+20
+
+Corn
+10
+Flour
+2
+Water
+2
+
+
+Beam
+20
+
+Ordinary Logs
+6
+Boards
+2
+Glue
+1
+
+
+Cardboard
+10
+
+Gravel
+2
+Ordinary Logs
+5
+

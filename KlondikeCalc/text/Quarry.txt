@@ -1,0 +1,25 @@
+Quarry
+
+Gravel
+3
+
+Stones
+5
+
+
+Quartz Sand
+10
+
+Quartz
+5
+
+
+Cement
+10
+
+Clay
+5
+
+Gravel
+1
+

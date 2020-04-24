@@ -1,0 +1,28 @@
+Glassblowers
+
+Glass
+20
+
+Quartz Sand
+1
+Fire
+2
+
+
+Window Glass
+30
+
+Glass
+3
+
+Pipes
+1
+
+
+Jar
+60
+
+Glass
+2
+Pipes
+1

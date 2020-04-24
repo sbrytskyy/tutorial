@@ -1,0 +1,11 @@
+Factory
+
+Stool
+20
+
+WoodVeneer
+3
+Nails
+1
+Glue
+1

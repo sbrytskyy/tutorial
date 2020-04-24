@@ -1,0 +1,10 @@
+Barn
+
+Water
+1
+
+Ice
+2
+Fire
+1
+
