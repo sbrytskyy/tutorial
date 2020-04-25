@@ -9,7 +9,7 @@ public final class Nails extends Product {
 		super(name, productionTime, ingredientCounts);
 	}
 
-	public static class NailsBuilder extends ProductBuilder<Nails> {
+	static class NailsBuilder extends ProductBuilder<Nails> {
 
 		@Override
 		public Nails internalBuild() {

@@ -3,13 +3,13 @@ package com.sb.klondike;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class Water extends Product {
+public class Water extends Product {
 
 	private Water(String name, int productionTime, Map<Ingredient, Integer> ingredientCounts) {
 		super(name, productionTime, ingredientCounts);
 	}
 
-	public static class WaterBuilder extends ProductBuilder<Water> {
+	static class WaterBuilder extends ProductBuilder<Water> {
 
 		@Override
 		public Water internalBuild() {
