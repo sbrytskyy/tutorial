@@ -1,11 +1,14 @@
 package com.sb.klondike;
 
-import com.sb.klondike.Nails.NailsBuilder;
-
 public class SmithyFactory {
 
 	public static Nails nails() {
-		return new NailsBuilder().build();
+		return new Nails.Builder()
+				.setProductionTime(15)
+				.addIngredient(new IronBar(), 3)
+				.addIngredient(BarnFactory.water(), 1)
+				.addIngredient(new Hammer(), 1)
+				.build();
 	}
 
 }

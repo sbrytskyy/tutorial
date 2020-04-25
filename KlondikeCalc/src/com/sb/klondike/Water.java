@@ -1,22 +1,21 @@
 package com.sb.klondike;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Water extends Product {
 
-	private Water(String name, int productionTime, Map<Ingredient, Integer> ingredientCounts) {
-		super(name, productionTime, ingredientCounts);
+	private Water(Builder builder) {
+		super("Water", builder);
 	}
 
-	static class WaterBuilder extends ProductBuilder<Water> {
+	static class Builder extends Product.Builder<Builder> {
 
 		@Override
-		public Water internalBuild() {
-			Map<Ingredient, Integer> ingredientCounts = new HashMap<>();
-			ingredientCounts.put(new Ice(), 2);
-			ingredientCounts.put(new Fire(), 1);
-			return new Water("Water", 1, ingredientCounts);
+		protected Water build() {
+			return new Water(this);
+		}
+
+		@Override
+		protected Builder getThis() {
+			return this;
 		}
 	}
 }
