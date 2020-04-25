@@ -9,11 +9,12 @@ public class Main {
 
 	private void run() {
 		Water p1 = BarnFactory.water();
-		System.out.println(p1);
 		Product.prettyPrintProduct(p1);
 
 		Nails p2 = SmithyFactory.nails();
-		System.out.println(p2);
 		Product.prettyPrintProduct(p2);
+
+		Chains p3 = SmithyFactory.chains();
+		Product.prettyPrintProduct(p3);
 	}
 }
