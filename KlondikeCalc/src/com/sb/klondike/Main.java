@@ -1,5 +1,6 @@
 package com.sb.klondike;
 
+import com.sb.klondike.factory.Bakery;
 import com.sb.klondike.factory.Factory;
 import com.sb.klondike.product.Product;
 
@@ -12,8 +13,10 @@ public class Main {
 
 	private void printProduct(Product p) {
 		System.out.println();
+		System.out.println("----------------------------------------------------------");
 		Product.prettyPrintProduct(p);
 		System.out.println("Basic ingredients: " + Product.getTotalIngredientCounts(p));
+		System.out.println("----------------------------------------------------------");
 		System.out.println();
 	}
 
@@ -25,5 +28,7 @@ public class Main {
 
 		printProduct(Factory.window());
 		printProduct(Factory.bed());
+
+		printProduct(Bakery.pancakes());
 	}
 }
