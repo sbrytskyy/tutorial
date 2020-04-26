@@ -1,7 +1,6 @@
 package com.sb.klondike;
 
-import com.sb.klondike.factory.Barn;
-import com.sb.klondike.factory.Smithy;
+import com.sb.klondike.factory.Factory;
 import com.sb.klondike.product.Product;
 
 public class Main {
@@ -11,17 +10,20 @@ public class Main {
 		main.run();
 	}
 
-	private void run() {
-		printProduct(Barn.water());
-		printProduct(Smithy.nails());
-		printProduct(Smithy.pipes());
-		printProduct(Smithy.chains());
-	}
-
 	private void printProduct(Product p) {
 		System.out.println();
 		Product.prettyPrintProduct(p);
 		System.out.println("Basic ingredients: " + Product.getTotalIngredientCounts(p));
 		System.out.println();
+	}
+
+	private void run() {
+//		printProduct(Barn.water());
+//		printProduct(Smithy.nails());
+//		printProduct(Smithy.pipes());
+//		printProduct(Smithy.chains());
+
+		printProduct(Factory.window());
+		printProduct(Factory.bed());
 	}
 }
