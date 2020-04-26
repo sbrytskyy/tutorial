@@ -1,4 +1,4 @@
-package com.sb.klondike;
+package com.sb.klondike.product;
 
 public final class Nails extends Product {
 
@@ -6,10 +6,10 @@ public final class Nails extends Product {
 		super("Nails", builder);
 	}
 
-	static class Builder extends Product.Builder<Builder> {
+	public static class Builder extends Product.Builder<Builder> {
 
 		@Override
-		protected Nails build() {
+		public Nails build() {
 			return new Nails(this);
 		}
 

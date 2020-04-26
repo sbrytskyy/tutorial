@@ -1,4 +1,4 @@
-package com.sb.klondike;
+package com.sb.klondike.ingredient;
 
 public abstract class Ingredient {
 

@@ -1,4 +1,4 @@
-package com.sb.klondike;
+package com.sb.klondike.product;
 
 public class Water extends Product {
 
@@ -6,10 +6,10 @@ public class Water extends Product {
 		super("Water", builder);
 	}
 
-	static class Builder extends Product.Builder<Builder> {
+	public static class Builder extends Product.Builder<Builder> {
 
 		@Override
-		protected Water build() {
+		public Water build() {
 			return new Water(this);
 		}
 

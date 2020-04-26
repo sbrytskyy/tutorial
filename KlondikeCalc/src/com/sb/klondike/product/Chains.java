@@ -1,4 +1,4 @@
-package com.sb.klondike;
+package com.sb.klondike.product;
 
 public final class Chains extends Product {
 
@@ -6,10 +6,10 @@ public final class Chains extends Product {
 		super("Chains", builder);
 	}
 
-	static class Builder extends Product.Builder<Builder> {
+	public static class Builder extends Product.Builder<Builder> {
 
 		@Override
-		protected Chains build() {
+		public Chains build() {
 			return new Chains(this);
 		}
 

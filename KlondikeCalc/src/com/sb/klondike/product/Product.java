@@ -1,4 +1,4 @@
-package com.sb.klondike;
+package com.sb.klondike.product;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
+
+import com.sb.klondike.ingredient.Ingredient;
 
 public abstract class Product extends Ingredient {
 
@@ -87,18 +89,18 @@ public abstract class Product extends Ingredient {
 		protected final Map<Ingredient, Integer> ingredientCounts = new HashMap<>();;
 		protected int productionTime;
 
-		T setProductionTime(int productionTime) {
+		public T setProductionTime(int productionTime) {
 			this.productionTime = productionTime;
 			return getThis();
 		}
 
-		T addIngredient(Ingredient ingredient, int count) {
+		public T addIngredient(Ingredient ingredient, int count) {
 			ingredientCounts.put(ingredient, count);
 			return getThis();
 		}
 
 		protected abstract T getThis();
 
-		abstract Product build();
+		public abstract Product build();
 	}
 }

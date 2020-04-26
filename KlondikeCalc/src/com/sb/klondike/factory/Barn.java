@@ -1,6 +1,10 @@
-package com.sb.klondike;
+package com.sb.klondike.factory;
 
-public class BarnFactory {
+import com.sb.klondike.ingredient.Fire;
+import com.sb.klondike.ingredient.Ice;
+import com.sb.klondike.product.Water;
+
+public class Barn {
 
 	public static Water water() {
 		return new Water.Builder()
