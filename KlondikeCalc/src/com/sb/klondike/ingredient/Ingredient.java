@@ -4,6 +4,10 @@ public abstract class Ingredient {
 
 	private final String name;
 
+	protected Ingredient() {
+		throw new UnsupportedOperationException();
+	}
+
 	public Ingredient(String name) {
 		this.name = name;
 	}

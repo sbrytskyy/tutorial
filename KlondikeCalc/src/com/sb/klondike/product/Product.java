@@ -14,6 +14,10 @@ public abstract class Product extends Ingredient {
 	private final int productionTime;
 	private final Map<Ingredient, Integer> ingredientCounts;
 
+	protected Product() {
+		throw new UnsupportedOperationException();
+	}
+
 	Product(String name, Builder<?> builder) {
 		super(name);
 		this.productionTime = builder.productionTime;
