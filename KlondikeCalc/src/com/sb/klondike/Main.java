@@ -27,14 +27,14 @@ public class Main {
 		List<String> ingredients = ingredientCounts.entrySet().stream()
 				.map(entry -> String.format("%s => %d", entry.getKey().getName(), entry.getValue()))
 				.collect(Collectors.toList());
-		System.out.println(String.format("Basic ingredients for %d %ss are: %s", quantity, p.getName(),
+		System.out.println(String.format("Basic ingredients for %d %ss are:\t%s", quantity, p.getName(),
 				String.join("\t", ingredients)));
 
 		Map<Ingredient, Integer> subProductsCounts = Product.getTotalSubProductsCounts(p, quantity);
 		List<String> subproducts = subProductsCounts.entrySet().stream()
 				.map(entry -> String.format("%s => %d", entry.getKey().getName(), entry.getValue()))
 				.collect(Collectors.toList());
-		System.out.println(String.format("Subproducts for %d %ss are: %s", quantity, p.getName(),
+		System.out.println(String.format("Subproducts for %d %ss are:\t%s", quantity, p.getName(),
 				String.join("\t", subproducts)));
 
 		System.out.println("----------------------------------------------------------");
