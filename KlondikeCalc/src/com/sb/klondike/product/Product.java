@@ -41,6 +41,10 @@ public abstract class Product extends Ingredient {
 	}
 
 	public static Map<Ingredient, Integer> getTotalIngredientCounts(Product p) {
+		return getTotalIngredientCounts(p, 1);
+	}
+
+	public static Map<Ingredient, Integer> getTotalIngredientCounts(Product p, int quantity) {
 		Map<Ingredient, Integer> totalIngredientCounts = new HashMap<>();
 
 		Queue<Map.Entry<Ingredient, Integer>> q = new LinkedList<>();
@@ -55,6 +59,7 @@ public abstract class Product extends Ingredient {
 			if (ingredient instanceof Product) {
 				Product subProduct = (Product) ingredient;
 				for (Map.Entry<Ingredient, Integer> subEntry : subProduct.getIngredientCounts().entrySet()) {
+//					subEntry.setValue(value)
 					Map.Entry<Ingredient, Integer> newSubEntry = Map.entry(subEntry.getKey(),
 							subEntry.getValue() * count);
 					q.offer(newSubEntry);
@@ -65,25 +70,34 @@ public abstract class Product extends Ingredient {
 			}
 		}
 
+		for (Map.Entry<Ingredient, Integer> e : totalIngredientCounts.entrySet()) {
+			e.setValue(e.getValue() * quantity);
+		}
+
 		return Collections.unmodifiableMap(totalIngredientCounts);
 	}
 
 	public static void prettyPrintProduct(Product p) {
+		prettyPrintProduct(p, 1);
+	}
+
+	public static void prettyPrintProduct(Product p, int quantity) {
 		System.out.println("-*** " + p.getName() + " ***-");
-		prettyPrintProduct(p, "");
+		prettyPrintProduct(p, "", quantity);
 		System.out.println("-***************************-");
 	}
 
-	private static void prettyPrintProduct(Product p, String prefix) {
+	private static void prettyPrintProduct(Product p, String prefix, int quantity) {
 		System.out.print(prefix + String.format("%s => %d min; ", p.getName(), p.productionTime));
 		System.out.println(p.ingredientCounts);
 
 		for (Map.Entry<Ingredient, Integer> entry : p.ingredientCounts.entrySet()) {
 			if (entry.getKey() instanceof Product) {
-				prettyPrintProduct((Product) entry.getKey(), prefix + "\t");
-				System.out.println(prefix + "\t" + "* " + entry.getValue());
+				prettyPrintProduct((Product) entry.getKey(), prefix + "\t", quantity);
+				System.out.println(prefix + "\t" + "* " + entry.getValue() * quantity);
 			} else {
-				System.out.println(prefix + "\t" + String.format("%s * %d", entry.getKey(), entry.getValue()));
+				System.out
+						.println(prefix + "\t" + String.format("%s * %d", entry.getKey(), entry.getValue() * quantity));
 			}
 		}
 	}
