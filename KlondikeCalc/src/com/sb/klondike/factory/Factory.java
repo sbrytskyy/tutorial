@@ -14,7 +14,7 @@ public class Factory {
 				.setProductionTime(20)
 				.addIngredient(Sawmill.woodVeneer(), 3)
 				.addIngredient(Smithy.nails(), 1)
-				.addIngredient(Sawmill.glue(), 1)
+				.addIngredient(Sawmill.glue(), 2)
 				.build();
 	}
 
