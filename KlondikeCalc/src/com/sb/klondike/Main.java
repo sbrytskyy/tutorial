@@ -1,8 +1,11 @@
 package com.sb.klondike;
 
-import com.sb.klondike.factory.Barn;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.sb.klondike.factory.Factory;
-import com.sb.klondike.factory.Smithy;
+import com.sb.klondike.ingredient.Ingredient;
 import com.sb.klondike.product.Product;
 
 public class Main {
@@ -12,28 +15,40 @@ public class Main {
 		main.run();
 	}
 
-	private void printProduct(Product p) {
+	public void printProduct(Product p) {
 		printProduct(p, 1);
 	}
 
-	private void printProduct(Product p, int quantity) {
+	public void printProduct(Product p, int quantity) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------");
-		Product.prettyPrintProduct(p);
+		Product.prettyPrintProduct(p, quantity);
+		Map<Ingredient, Integer> ingredientCounts = Product.getTotalIngredientCounts(p, quantity);
+		List<String> ingredients = ingredientCounts.entrySet().stream()
+				.map(entry -> String.format("%s => %d", entry.getKey().getName(), entry.getValue()))
+				.collect(Collectors.toList());
 		System.out.println(String.format("Basic ingredients for %d %ss are: %s", quantity, p.getName(),
-				Product.getTotalIngredientCounts(p, quantity)));
+				String.join("\t", ingredients)));
+
+		Map<Ingredient, Integer> subProductsCounts = Product.getTotalSubProductsCounts(p, quantity);
+		List<String> subproducts = subProductsCounts.entrySet().stream()
+				.map(entry -> String.format("%s => %d", entry.getKey().getName(), entry.getValue()))
+				.collect(Collectors.toList());
+		System.out.println(String.format("Subproducts for %d %ss are: %s", quantity, p.getName(),
+				String.join("\t", subproducts)));
+
 		System.out.println("----------------------------------------------------------");
 		System.out.println();
 	}
 
-	private void run() {
-		printProduct(Barn.water(), 2);
+	public void run() {
+//		printProduct(Barn.water(), 2);
 //		printProduct(Smithy.nails(), 2);
 //		printProduct(Smithy.pipes());
-		printProduct(Smithy.chains());
+//		printProduct(Smithy.chains());
 
 		printProduct(Factory.window(), 2);
-		printProduct(Factory.bed());
+//		printProduct(Factory.bed());
 
 //		printProduct(Bakery.pancakes());
 	}

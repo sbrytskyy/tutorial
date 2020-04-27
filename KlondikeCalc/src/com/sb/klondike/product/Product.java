@@ -77,6 +77,43 @@ public abstract class Product extends Ingredient {
 		return Collections.unmodifiableMap(totalIngredientCounts);
 	}
 
+	public static Map<Ingredient, Integer> getTotalSubProductsCounts(Product p) {
+		return getTotalSubProductsCounts(p, 1);
+	}
+
+	public static Map<Ingredient, Integer> getTotalSubProductsCounts(Product p, int quantity) {
+		Map<Ingredient, Integer> totalIngredientCounts = new HashMap<>();
+
+		Queue<Map.Entry<Ingredient, Integer>> q = new LinkedList<>();
+		for (Map.Entry<Ingredient, Integer> entry : p.ingredientCounts.entrySet()) {
+			q.offer(entry);
+		}
+
+		while (!q.isEmpty()) {
+			Entry<Ingredient, Integer> entry = q.poll();
+			Ingredient ingredient = entry.getKey();
+			Integer count = entry.getValue();
+			if (ingredient instanceof Product) {
+				Integer currentCount = totalIngredientCounts.getOrDefault(ingredient, 0);
+				totalIngredientCounts.put(ingredient, currentCount + count);
+
+				Product subProduct = (Product) ingredient;
+				for (Map.Entry<Ingredient, Integer> subEntry : subProduct.getIngredientCounts().entrySet()) {
+//					subEntry.setValue(value)
+					Map.Entry<Ingredient, Integer> newSubEntry = Map.entry(subEntry.getKey(),
+							subEntry.getValue() * count);
+					q.offer(newSubEntry);
+				}
+			}
+		}
+
+		for (Map.Entry<Ingredient, Integer> e : totalIngredientCounts.entrySet()) {
+			e.setValue(e.getValue() * quantity);
+		}
+
+		return Collections.unmodifiableMap(totalIngredientCounts);
+	}
+
 	public static void prettyPrintProduct(Product p) {
 		prettyPrintProduct(p, 1);
 	}
@@ -89,11 +126,12 @@ public abstract class Product extends Ingredient {
 
 	private static void prettyPrintProduct(Product p, String prefix, int quantity) {
 		System.out.print(prefix + String.format("%s => %d min; ", p.getName(), p.productionTime));
-		System.out.println(p.ingredientCounts);
+//		System.out.println(p.ingredientCounts);
+		System.out.println();
 
 		for (Map.Entry<Ingredient, Integer> entry : p.ingredientCounts.entrySet()) {
 			if (entry.getKey() instanceof Product) {
-				prettyPrintProduct((Product) entry.getKey(), prefix + "\t", quantity);
+				prettyPrintProduct((Product) entry.getKey(), prefix + "\t", entry.getValue() * quantity);
 				System.out.println(prefix + "\t" + "* " + entry.getValue() * quantity);
 			} else {
 				System.out
