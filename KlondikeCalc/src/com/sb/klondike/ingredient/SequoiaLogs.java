@@ -2,7 +2,7 @@ package com.sb.klondike.ingredient;
 
 public final class SequoiaLogs extends Ingredient {
 
-	public SequoiaLogs() {
+	SequoiaLogs() {
 		super("Sequoia Logs");
 	}
 }
