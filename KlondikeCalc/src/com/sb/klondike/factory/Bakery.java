@@ -1,11 +1,6 @@
 package com.sb.klondike.factory;
 
-import com.sb.klondike.ingredient.ChickenEggs;
-import com.sb.klondike.ingredient.Fire;
-import com.sb.klondike.ingredient.Pumpkin;
-import com.sb.klondike.ingredient.Rye;
-import com.sb.klondike.ingredient.SugarCane;
-import com.sb.klondike.ingredient.WildStrawberry;
+import com.sb.klondike.ingredient.Ingedients;
 import com.sb.klondike.product.BerryCake;
 import com.sb.klondike.product.Cookies;
 import com.sb.klondike.product.CurdBase;
@@ -21,7 +16,7 @@ public class Bakery {
 	public static Flour flour() {
 		return new Flour.Builder()
 				.setProductionTime(3)
-				.addIngredient(new Rye(), 5)
+				.addIngredient(Ingedients.rye(), 5)
 				.build();
 	}
 
@@ -30,7 +25,7 @@ public class Bakery {
 				.setProductionTime(5)
 				.addIngredient(flour(), 1)
 				.addIngredient(Barn.water(), 1)
-				.addIngredient(new ChickenEggs(), 6)
+				.addIngredient(Ingedients.chickenEggs(), 6)
 				.build();
 	}
 
@@ -38,7 +33,7 @@ public class Bakery {
 		return new Cookies.Builder()
 				.setProductionTime(10)
 				.addIngredient(dough(), 1)
-				.addIngredient(new Fire(), 5)
+				.addIngredient(Ingedients.fire(), 5)
 				.build();
 	}
 
@@ -47,7 +42,7 @@ public class Bakery {
 				.setProductionTime(20)
 				.addIngredient(dough(), 2)
 				.addIngredient(Dairy.gogleMogle(), 1)
-				.addIngredient(new Fire(), 10)
+				.addIngredient(Ingedients.fire(), 10)
 				.build();
 	}
 
@@ -56,15 +51,15 @@ public class Bakery {
 				.setProductionTime(30)
 				.addIngredient(dough(), 3)
 				.addIngredient(Dairy.butter(), 1)
-				.addIngredient(new WildStrawberry(), 9)
+				.addIngredient(Ingedients.wildStrawberry(), 9)
 				.build();
 	}
 
 	public static Sugar sugar() {
 		return new Sugar.Builder()
 				.setProductionTime(5)
-				.addIngredient(new SugarCane(), 5)
-				.addIngredient(new Fire(), 1)
+				.addIngredient(Ingedients.sugarCane(), 5)
+				.addIngredient(Ingedients.fire(), 1)
 				.build();
 	}
 
@@ -82,7 +77,7 @@ public class Bakery {
 				.setProductionTime(60)
 				.addIngredient(curdBase(), 1)
 				.addIngredient(Dairy.cheese(), 1)
-				.addIngredient(new Pumpkin(), 9)
+				.addIngredient(Ingedients.pumpkin(), 9)
 				.build();
 	}
 

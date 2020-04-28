@@ -2,7 +2,7 @@ package com.sb.klondike.ingredient;
 
 public final class ChickenEggs extends Ingredient {
 
-	public ChickenEggs() {
+	ChickenEggs() {
 		super("Chicken Eggs");
 	}
 }

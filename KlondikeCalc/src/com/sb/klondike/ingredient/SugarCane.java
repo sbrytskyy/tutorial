@@ -2,7 +2,7 @@ package com.sb.klondike.ingredient;
 
 public final class SugarCane extends Ingredient {
 
-	public SugarCane() {
+	SugarCane() {
 		super("Sugar Cane");
 	}
 }

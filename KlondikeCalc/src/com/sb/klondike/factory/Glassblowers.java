@@ -1,6 +1,6 @@
 package com.sb.klondike.factory;
 
-import com.sb.klondike.ingredient.Fire;
+import com.sb.klondike.ingredient.Ingedients;
 import com.sb.klondike.product.Glass;
 import com.sb.klondike.product.Jar;
 import com.sb.klondike.product.WindowGlass;
@@ -11,7 +11,7 @@ public class Glassblowers {
 		return new Glass.Builder()
 				.setProductionTime(20)
 				.addIngredient(Quarry.quartzSand(), 1)
-				.addIngredient(new Fire(), 2)
+				.addIngredient(Ingedients.fire(), 2)
 				.build();
 	}
 
