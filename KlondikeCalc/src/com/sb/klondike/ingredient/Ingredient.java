@@ -1,6 +1,11 @@
 package com.sb.klondike.ingredient;
 
-public abstract class Ingredient {
+import java.util.Map;
+import java.util.Optional;
+
+import com.sb.klondike.data.ProductionNode;
+
+public class Ingredient implements ProductionNode {
 
 	private final String name;
 
@@ -12,8 +17,24 @@ public abstract class Ingredient {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public boolean hasIngredients() {
+		return false;
+	}
+
+	@Override
+	public Optional<Map<Ingredient, Integer>> getIngredientCounts() {
+		return Optional.empty();
+	}
+
+	@Override
+	public int getProductionTime() {
+		return 0;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.sb.klondike.product;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import com.sb.klondike.ingredient.Ingredient;
 
@@ -21,12 +22,19 @@ public abstract class Product extends Ingredient {
 		this.ingredientCounts = Collections.unmodifiableMap(builder.ingredientCounts);
 	}
 
+	@Override
 	public int getProductionTime() {
 		return productionTime;
 	}
 
-	public Map<Ingredient, Integer> getIngredientCounts() {
-		return ingredientCounts;
+	@Override
+	public boolean hasIngredients() {
+		return true;
+	}
+
+	@Override
+	public Optional<Map<Ingredient, Integer>> getIngredientCounts() {
+		return Optional.of(ingredientCounts);
 	}
 
 	@Override

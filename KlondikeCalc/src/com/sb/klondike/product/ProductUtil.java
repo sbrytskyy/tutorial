@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Queue;
 
 import com.sb.klondike.ingredient.Ingredient;
@@ -19,30 +20,35 @@ public class ProductUtil {
 		Map<Ingredient, Integer> totalIngredientCounts = new HashMap<>();
 
 		Queue<Map.Entry<Ingredient, Integer>> q = new LinkedList<>();
-		for (Map.Entry<Ingredient, Integer> entry : p.getIngredientCounts().entrySet()) {
-			q.offer(entry);
-		}
+		Optional<Map<Ingredient, Integer>> optionalMap = p.getIngredientCounts();
+		if (optionalMap.isPresent()) {
 
-		while (!q.isEmpty()) {
-			Entry<Ingredient, Integer> entry = q.poll();
-			Ingredient ingredient = entry.getKey();
-			Integer count = entry.getValue();
-			if (ingredient instanceof Product) {
-				Product subProduct = (Product) ingredient;
-				for (Map.Entry<Ingredient, Integer> subEntry : subProduct.getIngredientCounts().entrySet()) {
-//					subEntry.setValue(value)
-					Map.Entry<Ingredient, Integer> newSubEntry = Map.entry(subEntry.getKey(),
-							subEntry.getValue() * count);
-					q.offer(newSubEntry);
-				}
-			} else {
-				Integer currentCount = totalIngredientCounts.getOrDefault(ingredient, 0);
-				totalIngredientCounts.put(ingredient, currentCount + count);
+			for (Map.Entry<Ingredient, Integer> entry : optionalMap.get().entrySet()) {
+				q.offer(entry);
 			}
-		}
 
-		for (Map.Entry<Ingredient, Integer> e : totalIngredientCounts.entrySet()) {
-			e.setValue(e.getValue() * quantity);
+			while (!q.isEmpty()) {
+				Entry<Ingredient, Integer> entry = q.poll();
+				Ingredient ingredient = entry.getKey();
+				Integer count = entry.getValue();
+				if (ingredient.hasIngredients()) {
+					optionalMap = ingredient.getIngredientCounts();
+					if (optionalMap.isPresent()) {
+						for (Map.Entry<Ingredient, Integer> subEntry : optionalMap.get().entrySet()) {
+							Map.Entry<Ingredient, Integer> newSubEntry = Map.entry(subEntry.getKey(),
+									subEntry.getValue() * count);
+							q.offer(newSubEntry);
+						}
+					}
+				} else {
+					Integer currentCount = totalIngredientCounts.getOrDefault(ingredient, 0);
+					totalIngredientCounts.put(ingredient, currentCount + count);
+				}
+			}
+
+			for (Map.Entry<Ingredient, Integer> e : totalIngredientCounts.entrySet()) {
+				e.setValue(e.getValue() * quantity);
+			}
 		}
 
 		return Collections.unmodifiableMap(totalIngredientCounts);
@@ -56,30 +62,35 @@ public class ProductUtil {
 		Map<Ingredient, Integer> totalIngredientCounts = new HashMap<>();
 
 		Queue<Map.Entry<Ingredient, Integer>> q = new LinkedList<>();
-		for (Map.Entry<Ingredient, Integer> entry : p.getIngredientCounts().entrySet()) {
-			q.offer(entry);
-		}
+		Optional<Map<Ingredient, Integer>> optionalMap = p.getIngredientCounts();
+		if (optionalMap.isPresent()) {
+			for (Map.Entry<Ingredient, Integer> entry : optionalMap.get().entrySet()) {
+				q.offer(entry);
+			}
 
-		while (!q.isEmpty()) {
-			Entry<Ingredient, Integer> entry = q.poll();
-			Ingredient ingredient = entry.getKey();
-			Integer count = entry.getValue();
-			if (ingredient instanceof Product) {
-				Integer currentCount = totalIngredientCounts.getOrDefault(ingredient, 0);
-				totalIngredientCounts.put(ingredient, currentCount + count);
+			while (!q.isEmpty()) {
+				Entry<Ingredient, Integer> entry = q.poll();
+				Ingredient ingredient = entry.getKey();
+				Integer count = entry.getValue();
+				if (ingredient instanceof Product) {
+					Integer currentCount = totalIngredientCounts.getOrDefault(ingredient, 0);
+					totalIngredientCounts.put(ingredient, currentCount + count);
 
-				Product subProduct = (Product) ingredient;
-				for (Map.Entry<Ingredient, Integer> subEntry : subProduct.getIngredientCounts().entrySet()) {
-//					subEntry.setValue(value)
-					Map.Entry<Ingredient, Integer> newSubEntry = Map.entry(subEntry.getKey(),
-							subEntry.getValue() * count);
-					q.offer(newSubEntry);
+					Product subProduct = (Product) ingredient;
+					optionalMap = subProduct.getIngredientCounts();
+					if (optionalMap.isPresent()) {
+						for (Map.Entry<Ingredient, Integer> subEntry : optionalMap.get().entrySet()) {
+							Map.Entry<Ingredient, Integer> newSubEntry = Map.entry(subEntry.getKey(),
+									subEntry.getValue() * count);
+							q.offer(newSubEntry);
+						}
+					}
 				}
 			}
-		}
 
-		for (Map.Entry<Ingredient, Integer> e : totalIngredientCounts.entrySet()) {
-			e.setValue(e.getValue() * quantity);
+			for (Map.Entry<Ingredient, Integer> e : totalIngredientCounts.entrySet()) {
+				e.setValue(e.getValue() * quantity);
+			}
 		}
 
 		return Collections.unmodifiableMap(totalIngredientCounts);
@@ -100,13 +111,17 @@ public class ProductUtil {
 //		System.out.println(p.ingredientCounts);
 		System.out.println();
 
-		for (Map.Entry<Ingredient, Integer> entry : p.getIngredientCounts().entrySet()) {
-			if (entry.getKey() instanceof Product) {
-				prettyPrintProduct((Product) entry.getKey(), prefix + "\t", entry.getValue() * quantity);
-				System.out.println(prefix + "\t" + "* " + entry.getValue() * quantity);
-			} else {
-				System.out
-						.println(prefix + "\t" + String.format("%s * %d", entry.getKey(), entry.getValue() * quantity));
+		Optional<Map<Ingredient, Integer>> optionalMap = p.getIngredientCounts();
+		if (optionalMap.isPresent()) {
+			for (Map.Entry<Ingredient, Integer> entry : optionalMap.get().entrySet()) {
+				if (entry.getKey() instanceof Product) {
+					prettyPrintProduct((Product) entry.getKey(), prefix + "\t", entry.getValue() * quantity);
+					System.out.println(prefix + "\t" + "* " + entry.getValue() * quantity);
+				} else {
+					System.out
+							.println(prefix + "\t"
+									+ String.format("%s * %d", entry.getKey(), entry.getValue() * quantity));
+				}
 			}
 		}
 	}
