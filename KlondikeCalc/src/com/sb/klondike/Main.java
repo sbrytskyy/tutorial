@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.sb.klondike.factory.Factory;
+import com.sb.klondike.factory.Bakery;
 import com.sb.klondike.ingredient.Ingredient;
 import com.sb.klondike.product.Product;
 import com.sb.klondike.product.ProductUtil;
@@ -53,7 +53,10 @@ public class Main {
 
 //		printProduct(Bakery.pancakes());
 
-		printProduct(Factory.stool(), 3);
+//		printProduct(Factory.stool());
+//		printProduct(Sawmill.beam(), 3);
+//		printProduct(Pottery.bricks(), 3);
 
+		printProduct(Bakery.berryCake());
 	}
 }
