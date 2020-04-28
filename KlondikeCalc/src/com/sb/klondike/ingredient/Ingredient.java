@@ -28,7 +28,7 @@ public class Ingredient implements ProductionNode {
 	}
 
 	@Override
-	public Optional<Map<Ingredient, Integer>> getIngredientCounts() {
+	public Optional<Map<ProductionNode, Integer>> getProductionNodeCounts() {
 		return Optional.empty();
 	}
 

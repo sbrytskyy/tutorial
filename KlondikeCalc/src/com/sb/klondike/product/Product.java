@@ -5,12 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import com.sb.klondike.data.ProductionNode;
 import com.sb.klondike.ingredient.Ingredient;
 
 public abstract class Product extends Ingredient {
 
 	private final int productionTime;
-	private final Map<Ingredient, Integer> ingredientCounts;
+	private final Map<ProductionNode, Integer> ingredientCounts;
 
 	protected Product() {
 		throw new UnsupportedOperationException();
@@ -33,7 +34,7 @@ public abstract class Product extends Ingredient {
 	}
 
 	@Override
-	public Optional<Map<Ingredient, Integer>> getIngredientCounts() {
+	public Optional<Map<ProductionNode, Integer>> getProductionNodeCounts() {
 		return Optional.of(ingredientCounts);
 	}
 

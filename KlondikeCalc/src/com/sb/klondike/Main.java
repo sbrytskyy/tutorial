@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.sb.klondike.data.ProductionNode;
 import com.sb.klondike.factory.Bakery;
-import com.sb.klondike.ingredient.Ingredient;
 import com.sb.klondike.product.Product;
 import com.sb.klondike.product.ProductUtil;
 
@@ -24,14 +24,14 @@ public class Main {
 		System.out.println();
 		System.out.println("----------------------------------------------------------");
 		ProductUtil.prettyPrintProduct(p, quantity);
-		Map<Ingredient, Integer> ingredientCounts = ProductUtil.getTotalIngredientCounts(p, quantity);
+		Map<ProductionNode, Integer> ingredientCounts = ProductUtil.getTotalIngredientCounts(p, quantity);
 		List<String> ingredients = ingredientCounts.entrySet().stream()
 				.map(entry -> String.format("%s => %d", entry.getKey().getName(), entry.getValue()))
 				.collect(Collectors.toList());
 		System.out.println(String.format("Basic ingredients for %d %ss are:\t%s", quantity, p.getName(),
 				String.join("\t", ingredients)));
 
-		Map<Ingredient, Integer> subProductsCounts = ProductUtil.getTotalSubProductsCounts(p, quantity);
+		Map<ProductionNode, Integer> subProductsCounts = ProductUtil.getTotalSubProductsCounts(p, quantity);
 		List<String> subproducts = subProductsCounts.entrySet().stream()
 				.map(entry -> String.format("%s => %d", entry.getKey().getName(), entry.getValue()))
 				.collect(Collectors.toList());
