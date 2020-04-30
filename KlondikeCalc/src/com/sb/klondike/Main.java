@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.sb.klondike.data.ProductionNode;
-import com.sb.klondike.factory.Bakery;
+import com.sb.klondike.factory.Dairy;
 import com.sb.klondike.factory.Factory;
 import com.sb.klondike.factory.Pottery;
 import com.sb.klondike.factory.Smithy;
@@ -65,6 +65,6 @@ public class Main {
 		printProduct(Pottery.tile());
 		printProduct(Factory.table());
 
-		printProduct(Bakery.strawberryPie(), 3);
+		printProduct(Dairy.cheese(), 3);
 	}
 }

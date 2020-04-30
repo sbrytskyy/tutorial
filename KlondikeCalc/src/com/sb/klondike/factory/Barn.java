@@ -6,6 +6,7 @@ import com.sb.klondike.product.Hay;
 import com.sb.klondike.product.Matches;
 import com.sb.klondike.product.Popcorn;
 import com.sb.klondike.product.Porridge;
+import com.sb.klondike.product.SheepFeed;
 import com.sb.klondike.product.Water;
 
 public class Barn {
@@ -30,6 +31,14 @@ public class Barn {
 				.setProductionTime(1)
 				.addIngredient(Ingedients.ice(), 2)
 				.addIngredient(Ingedients.fire(), 1)
+				.build();
+	}
+
+	public static SheepFeed sheepFeed() {
+		return new SheepFeed.Builder()
+				.setProductionTime(5)
+				.addIngredient(Ingedients.freshGrass(), 9)
+				.addIngredient(water(), 3)
 				.build();
 	}
 
