@@ -20,6 +20,14 @@ public class Ingedients {
 		return new Rye();
 	}
 
+	public static Beans beans() {
+		return new Beans();
+	}
+
+	public static FreshGrass freshGrass() {
+		return new FreshGrass();
+	}
+
 	public static Corn corn() {
 		return new Corn();
 	}
