@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.data.ProductionNode;
 import com.sb.klondike.ingredient.Ingredient;
 
@@ -12,8 +13,10 @@ public abstract class Product extends Ingredient {
 
 	private final int productionTime;
 	private final Map<ProductionNode, Integer> ingredientCounts;
+	private final FactoryType factoryType;
 
 	protected Product() {
+		this.factoryType = null;
 		throw new UnsupportedOperationException();
 	}
 
@@ -21,6 +24,7 @@ public abstract class Product extends Ingredient {
 		super(name);
 		this.productionTime = builder.productionTime;
 		this.ingredientCounts = Collections.unmodifiableMap(builder.ingredientCounts);
+		this.factoryType = builder.factoryType;
 	}
 
 	@Override
@@ -38,6 +42,10 @@ public abstract class Product extends Ingredient {
 		return Optional.of(ingredientCounts);
 	}
 
+	public FactoryType getFactoryType() {
+		return factoryType;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -50,6 +58,7 @@ public abstract class Product extends Ingredient {
 
 		protected final Map<Ingredient, Integer> ingredientCounts = new HashMap<>();;
 		protected int productionTime;
+		protected FactoryType factoryType;
 
 		public T setProductionTime(int productionTime) {
 			this.productionTime = productionTime;
@@ -58,6 +67,11 @@ public abstract class Product extends Ingredient {
 
 		public T addIngredient(Ingredient ingredient, int count) {
 			ingredientCounts.put(ingredient, count);
+			return getThis();
+		}
+
+		public T setFactoryType(FactoryType factoryType) {
+			this.factoryType = factoryType;
 			return getThis();
 		}
 

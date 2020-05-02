@@ -1,5 +1,6 @@
 package com.sb.klondike.factory;
 
+import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.ingredient.Ingedients;
 import com.sb.klondike.product.BerryCake;
 import com.sb.klondike.product.Cookies;
@@ -13,9 +14,12 @@ import com.sb.klondike.product.Sugar;
 
 public class Bakery {
 
+	private static final FactoryType factoryType = FactoryType.BAKERY;
+
 	public static Flour flour() {
 		return new Flour.Builder()
 				.setProductionTime(3)
+				.setFactoryType(factoryType)
 				.addIngredient(Ingedients.rye(), 5)
 				.build();
 	}
@@ -23,6 +27,7 @@ public class Bakery {
 	public static Dough dough() {
 		return new Dough.Builder()
 				.setProductionTime(5)
+				.setFactoryType(factoryType)
 				.addIngredient(flour(), 1)
 				.addIngredient(Barn.water(), 1)
 				.addIngredient(Ingedients.chickenEggs(), 6)
@@ -32,6 +37,7 @@ public class Bakery {
 	public static Cookies cookies() {
 		return new Cookies.Builder()
 				.setProductionTime(10)
+				.setFactoryType(factoryType)
 				.addIngredient(dough(), 1)
 				.addIngredient(Ingedients.fire(), 5)
 				.build();
@@ -40,6 +46,7 @@ public class Bakery {
 	public static Pancakes pancakes() {
 		return new Pancakes.Builder()
 				.setProductionTime(20)
+				.setFactoryType(factoryType)
 				.addIngredient(dough(), 2)
 				.addIngredient(Dairy.gogleMogle(), 1)
 				.addIngredient(Ingedients.fire(), 10)
@@ -49,6 +56,7 @@ public class Bakery {
 	public static StrawberryPie strawberryPie() {
 		return new StrawberryPie.Builder()
 				.setProductionTime(30)
+				.setFactoryType(factoryType)
 				.addIngredient(dough(), 3)
 				.addIngredient(Dairy.butter(), 1)
 				.addIngredient(Ingedients.wildStrawberry(), 9)
@@ -58,6 +66,7 @@ public class Bakery {
 	public static Sugar sugar() {
 		return new Sugar.Builder()
 				.setProductionTime(5)
+				.setFactoryType(factoryType)
 				.addIngredient(Ingedients.sugarCane(), 5)
 				.addIngredient(Ingedients.fire(), 1)
 				.build();
@@ -66,6 +75,7 @@ public class Bakery {
 	public static CurdBase curdBase() {
 		return new CurdBase.Builder()
 				.setProductionTime(30)
+				.setFactoryType(factoryType)
 				.addIngredient(dough(), 2)
 				.addIngredient(Dairy.curdCheese(), 1)
 				.addIngredient(sugar(), 2)
@@ -75,6 +85,7 @@ public class Bakery {
 	public static PumpkinCheesecake pumpkinCheesecake() {
 		return new PumpkinCheesecake.Builder()
 				.setProductionTime(60)
+				.setFactoryType(factoryType)
 				.addIngredient(curdBase(), 1)
 				.addIngredient(Dairy.cheese(), 1)
 				.addIngredient(Ingedients.pumpkin(), 9)
@@ -84,6 +95,7 @@ public class Bakery {
 	public static BerryCake berryCake() {
 		return new BerryCake.Builder()
 				.setProductionTime(90)
+				.setFactoryType(factoryType)
 				.addIngredient(curdBase(), 1)
 				.addIngredient(Dairy.cheese(), 1)
 				.addIngredient(Dairy.yoghurt(), 1)
