@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Queue;
 
+import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.data.ProductionNode;
 
 public class ProductUtil {
@@ -94,6 +95,27 @@ public class ProductUtil {
 		}
 
 		return Collections.unmodifiableMap(totalIngredientCounts);
+	}
+
+	public static Map<FactoryType, Integer> getProductionTime(Product p) {
+		return getProductionTime(p, 1);
+	}
+
+	public static Map<FactoryType, Integer> getProductionTime(Product p, int quantity) {
+		Map<FactoryType, Integer> totalTime = new HashMap<>();
+
+		Map<ProductionNode, Integer> map = getTotalSubProductsCounts(p, quantity);
+		for (Map.Entry<ProductionNode, Integer> entry : map.entrySet()) {
+			ProductionNode ingredient = entry.getKey();
+			Integer count = entry.getValue();
+			if (ingredient instanceof Product) {
+				Product product = (Product) ingredient;
+				Integer currentTime = totalTime.getOrDefault(product.getFactoryType(), 0);
+				totalTime.put(product.getFactoryType(), currentTime + product.getProductionTime() * count);
+			}
+		}
+
+		return Collections.unmodifiableMap(totalTime);
 	}
 
 	public static void prettyPrintProduct(Product p) {

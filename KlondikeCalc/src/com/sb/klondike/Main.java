@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.data.ProductionNode;
 import com.sb.klondike.factory.Factory;
 import com.sb.klondike.product.Product;
@@ -37,6 +38,14 @@ public class Main {
 				.collect(Collectors.toList());
 		System.out.println(String.format("Subproducts for %d %ss are:\t%s", quantity, p.getName(),
 				String.join("\t", subproducts)));
+
+		Map<FactoryType, Integer> productionTime = ProductUtil.getProductionTime(p, quantity);
+		List<String> times = productionTime.entrySet().stream()
+				.map(entry -> String.format("%s => '%d hrs %d min'", entry.getKey(), entry.getValue() / 60,
+						entry.getValue() % 60))
+				.collect(Collectors.toList());
+		System.out.println(String.format("Production Time for %d %ss are:\t%s", quantity, p.getName(),
+				String.join("\t", times)));
 
 		System.out.println("----------------------------------------------------------");
 		System.out.println();
