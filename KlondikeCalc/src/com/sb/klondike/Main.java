@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.data.ProductionNode;
-import com.sb.klondike.factory.Factory;
+import com.sb.klondike.factory.Dairy;
 import com.sb.klondike.product.Product;
 import com.sb.klondike.product.ProductUtil;
 
@@ -69,8 +69,11 @@ public class Main {
 
 //		printProduct(Smithy.pipes(), 3);
 //		printProduct(Pottery.tile());
-		printProduct(Factory.bed(), 3);
+//		printProduct(Factory.bed(), 3);
 
 //		printProduct(Dairy.cheese(), 3);
+
+//		printProduct(Bakery.berryCake(), 2);
+		printProduct(Dairy.curdCheese(), 2);
 	}
 }

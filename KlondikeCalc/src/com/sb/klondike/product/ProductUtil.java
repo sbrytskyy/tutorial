@@ -104,6 +104,8 @@ public class ProductUtil {
 	public static Map<FactoryType, Integer> getProductionTime(Product p, int quantity) {
 		Map<FactoryType, Integer> totalTime = new HashMap<>();
 
+		totalTime.put(p.getFactoryType(), p.getProductionTime() * quantity);
+
 		Map<ProductionNode, Integer> map = getTotalSubProductsCounts(p, quantity);
 		for (Map.Entry<ProductionNode, Integer> entry : map.entrySet()) {
 			ProductionNode ingredient = entry.getKey();
