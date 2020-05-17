@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.data.ProductionNode;
-import com.sb.klondike.factory.Dairy;
+import com.sb.klondike.factory.Factory;
 import com.sb.klondike.product.Product;
 import com.sb.klondike.product.ProductUtil;
 
@@ -53,27 +53,26 @@ public class Main {
 
 	public void run() {
 //		printProduct(Barn.water(), 2);
+
+//		printProduct(Sawmill.beam(), 3);
+
 //		printProduct(Smithy.nails(), 2);
 //		printProduct(Smithy.chains());
-
-//		printProduct(Factory.window(), 2);
-//		printProduct(Factory.bed());
-
-//		printProduct(Bakery.pancakes());
-
-//		printProduct(Factory.stool());
-//		printProduct(Sawmill.beam(), 3);
-//		printProduct(Pottery.bricks(), 3);
-
-//		printProduct(Bakery.berryCake());
-
 //		printProduct(Smithy.pipes(), 3);
-//		printProduct(Pottery.tile());
-//		printProduct(Factory.bed(), 3);
 
 //		printProduct(Dairy.cheese(), 3);
+//		printProduct(Dairy.curdCheese(), 2);
+//		printProduct(Dairy.yoghurt(), 3);
 
 //		printProduct(Bakery.berryCake(), 2);
-		printProduct(Dairy.curdCheese(), 2);
+//		printProduct(Bakery.pancakes());
+//		printProduct(Bakery.pumpkinCheesecake(), 3);
+
+//		printProduct(Pottery.bricks(), 3);
+//		printProduct(Pottery.tile());
+
+//		printProduct(Factory.stool());
+//		printProduct(Factory.bed());
+		printProduct(Factory.window(), 5);
 	}
 }
