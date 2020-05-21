@@ -6,6 +6,7 @@ public enum FactoryType {
 	DAIRY,
 	FACTORY,
 	GLASSBLOWERS,
+	PACKING_HOUSE,
 	POTTERY,
 	QUARRY,
 	SAWMILL,

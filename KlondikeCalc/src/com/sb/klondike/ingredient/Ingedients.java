@@ -37,12 +37,29 @@ public class Ingedients {
 	}
 
 	// Greenhouse
+	public static SugarCane sugarCane() {
+		// 60
+		return new SugarCane();
+	}
+
 	public static Pumpkin pumpkin() {
+		// 120
 		return new Pumpkin();
 	}
 
-	public static SugarCane sugarCane() {
-		return new SugarCane();
+	public static Tomatoes tomatoes() {
+		// 150
+		return new Tomatoes();
+	}
+
+	public static Cotton cotton() {
+		// 180
+		return new Cotton();
+	}
+
+	public static Watermelon watermelon() {
+		// 240
+		return new Watermelon();
 	}
 
 	// Campfire
@@ -97,4 +114,5 @@ public class Ingedients {
 	public static Trowel trowel() {
 		return new Trowel();
 	}
+
 }

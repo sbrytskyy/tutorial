@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import com.sb.klondike.data.FactoryType;
 import com.sb.klondike.data.ProductionNode;
-import com.sb.klondike.factory.Factory;
+import com.sb.klondike.factory.PackingHouse;
 import com.sb.klondike.product.Product;
 import com.sb.klondike.product.ProductUtil;
 
@@ -73,6 +73,8 @@ public class Main {
 
 //		printProduct(Factory.stool());
 //		printProduct(Factory.bed());
-		printProduct(Factory.window(), 5);
+//		printProduct(Factory.window(), 5);
+
+		printProduct(PackingHouse.cannedPumpkins(), 3);
 	}
 }
