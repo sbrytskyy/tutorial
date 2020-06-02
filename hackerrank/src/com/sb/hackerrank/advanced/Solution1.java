@@ -25,7 +25,7 @@ class Student {
 	}
 }
 
-public class Solution {
+public class Solution1 {
 
 	public static void main(String[] args) {
 		Class student = Student.class;
