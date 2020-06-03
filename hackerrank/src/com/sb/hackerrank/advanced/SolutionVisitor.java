@@ -104,24 +104,26 @@ class SumInLeavesVisitor extends TreeVis {
 
 class ProductOfRedNodesVisitor extends TreeVis {
 
-	int result = 1;
+	long result = 1;
+
+	private final int M = 1000000007;
 
 	@Override
 	public int getResult() {
-		return result;
+		return (int) result;
 	}
 
 	@Override
 	public void visitNode(TreeNode node) {
 		if (node.getColor() == Color.RED) {
-			result *= node.getValue();
+			result = (result * node.getValue()) % M;
 		}
 	}
 
 	@Override
 	public void visitLeaf(TreeLeaf leaf) {
 		if (leaf.getColor() == Color.RED) {
-			result *= leaf.getValue();
+			result = (result * leaf.getValue()) % M;
 		}
 	}
 }
@@ -178,22 +180,37 @@ public class SolutionVisitor {
 			int u2 = scanner.nextInt();
 
 			rel[u1 - 1].add(u2 - 1);
+			rel[u2 - 1].add(u1 - 1);
 		}
 		scanner.close();
 
-		return createNodes(0, values, colors, rel, 0);
+		boolean[] visited = new boolean[n];
+
+		Tree root = createNodes(0, values, colors, rel, visited, 0);
+		return root;
 	}
 
-	private static Tree createNodes(int index, int[] values, int[] colors, List<Integer>[] rel, int depth) {
+	private static Tree createNodes(int index, int[] values, int[] colors, List<Integer>[] rel, boolean[] visited,
+			int depth) {
 		Tree node;
-
+		visited[index] = true;
 		if (rel[index].size() == 0) {
 			node = new TreeLeaf(values[index], colors[index] == 0 ? Color.RED : Color.GREEN, depth);
 		} else {
 			node = new TreeNode(values[index], colors[index] == 0 ? Color.RED : Color.GREEN, depth);
 
+			int childsCount = 0;
 			for (int childIndex : rel[index]) {
-				((TreeNode) node).addChild(createNodes(childIndex, values, colors, rel, depth + 1));
+				if (!visited[childIndex]) {
+					Tree child = createNodes(childIndex, values, colors, rel, visited, depth + 1);
+					if (child != null) {
+						childsCount++;
+						((TreeNode) node).addChild(child);
+					}
+				}
+			}
+			if (childsCount == 0) {
+				node = new TreeLeaf(values[index], colors[index] == 0 ? Color.RED : Color.GREEN, depth);
 			}
 		}
 
