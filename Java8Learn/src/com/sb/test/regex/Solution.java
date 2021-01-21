@@ -71,7 +71,14 @@ public class Solution {
 		System.out.println("---------------------------------------");
 		System.out.println("Line to test: " + line);
 		// String to be scanned to find the pattern.
-		String pattern = "^(collaborator-rule|rule)-(\\d+)-(\\d{19}+)$";
+//		String pattern = "^(collaborator-rule|rule)-(\\d+)-(\\d{19}+)$";
+//		String pattern = "^(.+)$";
+
+//		(rpcreplay.processing).set_regex_to_value.regex = "#[0-9]*",
+//		(rpcreplay.processing).set_regex_to_value.value = "#0"
+
+		String pattern = "\\d";
+		String replacement = "0";
 
 		// Create a Pattern object
 		Pattern r = Pattern.compile(pattern);
@@ -81,8 +88,11 @@ public class Solution {
 		if (m.find()) {
 			for (int g = 0; g < m.groupCount() + 1; g++) {
 				String group = m.group(g);
-				System.out.println(g + " : " + group + " : " + group.length());
+//				System.out.println(g + " : " + group + " : " + group.length());
 			}
+
+			String newS = line.replaceAll(pattern, replacement);
+			System.out.println("new string: " + newS);
 		} else {
 			System.out.println("NO MATCH");
 		}
