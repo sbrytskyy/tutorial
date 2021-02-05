@@ -14,14 +14,31 @@ public class KnapsackSol1 {
 	private int findMax(int[][] items, int weight) {
 		dp = new int[items.length + 1][weight + 1];
 
-		for (int i = 0; i < items.length; i++) {
-			int dpInd = i + 1;
-			int itemWeight = items[i][0];
-			int itemValue = items[i][1];
-			for (int w = itemWeight; w <= weight; w++) {
-				dp[dpInd][w] = Math.max(dp[dpInd - 1][w], itemValue + dp[dpInd - 1][weight - itemWeight]);
+		for (int i = 1; i <= items.length; i++) {
+			int itemWeight = items[i - 1][0];
+			int itemValue = items[i - 1][1];
+
+			for (int w = 1; w <= weight; w++) {
+
+				int notTakeItem = dp[i - 1][w];
+
+				int takeItem = 0;
+				if (itemWeight <= w) {
+					takeItem = itemValue + dp[i - 1][w - itemWeight];
+				}
+
+				dp[i][w] = Math.max(notTakeItem, takeItem);
 			}
 		}
+
+		// Check if this simplification is correct
+//		for (int i = 1; i <= items.length; i++) {
+//			int itemWeight = items[i - 1][0];
+//			int itemValue = items[i - 1][1];
+//			for (int w = itemWeight; w <= weight; w++) {
+//				dp[i][w] = Math.max(dp[i - 1][w], itemValue + dp[i - 1][w - itemWeight]);
+//			}
+//		}
 
 		Utils.printArray2D(dp, "DP");
 
