@@ -17,7 +17,7 @@ public class KnapsackSol1 {
 		dp = new int[items.length + 1][weight + 1];
 
 		for (int i = 0; i < items.length; i++) {
-			dp[i][weight] = items[i][0];
+			dp[i + 1][weight] = items[i][0];
 		}
 
 		int maxValue = 0;
@@ -46,7 +46,7 @@ public class KnapsackSol1 {
 				System.out.println("Item " + Arrays.toString(items[i]) + " included");
 				w -= itemWeight;
 			}
-			maxValue = Math.max(maxValue, max);
+			maxValue += max;
 		}
 
 		Utils.printArray2D(dp, "DP");
