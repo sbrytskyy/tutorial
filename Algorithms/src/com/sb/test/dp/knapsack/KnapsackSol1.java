@@ -57,10 +57,18 @@ public class KnapsackSol1 {
 	public static void main(String[] args) {
 		KnapsackSol1 sol = new KnapsackSol1();
 
-		int[][] items = new int[][] { { 5, 10 }, { 7, 13 }, { 9, 19 }, { 2, 4 } };
-		int weight = 10;
-		int maxVal = sol.findMax(items, weight);
+		int[][] items;
+		int weight;
+		int maxVal;
+
+		items = new int[][] { { 5, 10 }, { 7, 13 }, { 9, 19 }, { 2, 4 } };
+		weight = 10;
+		maxVal = sol.findMax(items, weight);
 		System.out.println("Max value: " + maxVal);
 
+		items = new int[][] { { 4, 10 }, { 2, 4 }, { 3, 7 } };
+		weight = 5;
+		maxVal = sol.findMax(items, weight);
+		System.out.println("Max value: " + maxVal);
 	}
 }
