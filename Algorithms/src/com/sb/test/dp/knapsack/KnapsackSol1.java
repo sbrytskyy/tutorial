@@ -1,7 +1,5 @@
 package com.sb.test.dp.knapsack;
 
-import java.util.Arrays;
-
 import com.sb.lc.common.Utils;
 
 public class KnapsackSol1 {
@@ -17,41 +15,17 @@ public class KnapsackSol1 {
 		dp = new int[items.length + 1][weight + 1];
 
 		for (int i = 0; i < items.length; i++) {
-			dp[i + 1][weight] = items[i][0];
-		}
-
-		int maxValue = 0;
-		int w = weight;
-
-		for (int i = 0; i < items.length; i++) {
 			int dpInd = i + 1;
-
 			int itemWeight = items[i][0];
 			int itemValue = items[i][1];
-
-			if (itemWeight > w) {
-				System.out.println("Item " + Arrays.toString(items[i]) + " not included as it's too heavy");
-				continue;
+			for (int w = itemWeight; w <= weight; w++) {
+				dp[dpInd][w] = Math.max(dp[dpInd - 1][w], itemValue + dp[dpInd - 1][weight - itemWeight]);
 			}
-
-			dp[dpInd][w] = dp[dpInd - 1][w];
-			dp[dpInd][w - itemWeight] = dp[dpInd - 1][w] + itemValue;
-
-			int max = 0;
-			if (dp[dpInd][w] > dp[dpInd][w - itemWeight]) {
-				max = dp[dpInd][w];
-				System.out.println("Item " + Arrays.toString(items[i]) + " not included");
-			} else {
-				max = dp[dpInd][w - itemWeight];
-				System.out.println("Item " + Arrays.toString(items[i]) + " included");
-				w -= itemWeight;
-			}
-			maxValue += max;
 		}
 
 		Utils.printArray2D(dp, "DP");
 
-		return maxValue;
+		return dp[items.length][weight];
 	}
 
 	public static void main(String[] args) {
