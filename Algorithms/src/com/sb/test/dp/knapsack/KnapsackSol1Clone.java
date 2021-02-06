@@ -15,6 +15,23 @@ public class KnapsackSol1Clone {
 
 		dp = new int[items.length + 1][capacity + 1];
 
+		for (int i = 1; i <= items.length; i++) {
+			int itemWeight = items[i - 1][0];
+			int itemValue = items[i - 1][1];
+
+			for (int w = 1; w <= capacity; w++) {
+
+				int take = 0;
+				if (itemWeight <= w) {
+					take = itemValue + dp[i - 1][w - itemWeight];
+				}
+
+				int skip = dp[i - 1][w];
+
+				dp[i][w] = Math.max(take, skip);
+			}
+		}
+
 		Utils.printArray2D(dp, "DP");
 
 		return dp[items.length][capacity];
