@@ -19,6 +19,8 @@ public class RodCutSol1 {
 				int cut = 0;
 				if (itemLength <= l) {
 					cut = itemValue + dp[i][l - itemLength];
+					// TODO check why in Udemy course "i" is used instead of "itemLength"
+//					cut = itemValue + dp[i][l - i];
 				}
 
 				int skip = dp[i - 1][l];
