@@ -1,5 +1,7 @@
 package com.sb.test.dp.knapsack;
 
+import java.util.Arrays;
+
 import com.sb.lc.common.Utils;
 
 public class KnapsackSol1Clone {
@@ -11,7 +13,7 @@ public class KnapsackSol1Clone {
 	 * @param capacity Max capacity
 	 * @return Max value
 	 */
-	private int findMax(int[][] items, int capacity) {
+	public int findMax(int[][] items, int capacity) {
 
 		dp = new int[items.length + 1][capacity + 1];
 
@@ -37,6 +39,16 @@ public class KnapsackSol1Clone {
 		return dp[items.length][capacity];
 	}
 
+	public void printUsedItems(int[][] items, int capacity) {
+		int w = capacity;
+		for (int i = items.length; i >= 0; i--) {
+			if (dp[i][w] != 0 && dp[i][w] > dp[i - 1][w]) {
+				System.out.println("Used item: " + Arrays.toString(items[i - 1]));
+				w -= items[i - 1][0];
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		KnapsackSol1Clone sol = new KnapsackSol1Clone();
 
@@ -47,11 +59,15 @@ public class KnapsackSol1Clone {
 		items = new int[][] { { 5, 10 }, { 7, 13 }, { 9, 19 }, { 2, 4 } };
 		capacity = 10;
 		maxVal = sol.findMax(items, capacity);
+		System.out.println("Capacity: " + capacity);
 		System.out.println("Max value: " + maxVal);
+		sol.printUsedItems(items, capacity);
 
 		items = new int[][] { { 4, 10 }, { 2, 4 }, { 3, 7 } };
 		capacity = 5;
 		maxVal = sol.findMax(items, capacity);
+		System.out.println("Capacity: " + capacity);
 		System.out.println("Max value: " + maxVal);
+		sol.printUsedItems(items, capacity);
 	}
 }
