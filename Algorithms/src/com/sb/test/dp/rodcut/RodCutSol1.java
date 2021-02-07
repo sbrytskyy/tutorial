@@ -19,8 +19,6 @@ public class RodCutSol1 {
 				int cut = 0;
 				if (itemLength <= l) {
 					cut = itemValue + dp[i][l - itemLength];
-					// TODO check why in Udemy course "i" is used instead of "itemLength"
-//					cut = itemValue + dp[i][l - i];
 				}
 
 				int skip = dp[i - 1][l];
@@ -48,14 +46,14 @@ public class RodCutSol1 {
 		maxValue = sol.findMaxValue(items, length);
 		System.out.println("Max Value: " + maxValue);
 
-		items = new int[][] { { 1, 1 }, { 2, 5 }, { 3, 8 }, { 4, 9 }, { 5, 10 }, { 6, 17 }, { 7, 17 }, { 8, 20 } };
+		items = new int[][] { { 1, 1 }, { 2, 5 }, { 3, 8 }, { 4, 9 }, /* { 5, 10 }, */{ 6, 17 }, { 7, 17 }, { 8, 20 } };
 		length = 8;
 
 		maxValue = sol.findMaxValue(items, length);
 		System.out.println("Max Value: " + maxValue);
 		assert maxValue == 22;
 
-		items = new int[][] { { 1, 3 }, { 2, 5 }, { 3, 8 }, { 4, 9 }, { 5, 10 }, { 6, 17 }, { 7, 17 }, { 8, 20 } };
+		items = new int[][] { { 1, 3 }, { 2, 5 }, /* { 3, 8 }, { 4, 9 }, */{ 5, 10 }, { 6, 17 }, { 7, 17 }, { 8, 20 } };
 		length = 8;
 
 		maxValue = sol.findMaxValue(items, length);
