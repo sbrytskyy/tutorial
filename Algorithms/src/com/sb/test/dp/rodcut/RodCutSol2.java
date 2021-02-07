@@ -57,5 +57,12 @@ public class RodCutSol2 {
 		System.out.println("Max Value: " + maxValue);
 		assert maxValue == 24;
 
+		items = new int[] { 1, 5, 8, 9, 10, 17, 17, 20 };
+		length = 4;
+
+		maxValue = sol.findMaxValue(items, length);
+		System.out.println("Max Value: " + maxValue);
+		assert maxValue == 10;
+
 	}
 }
