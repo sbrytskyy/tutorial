@@ -1,30 +1,29 @@
-package com.sb.test.recursion;
+package com.sb.test.dp.rodcut;
 
-public class RodCutting {
+public class RodCuttingDP {
 
 	private int findMaxValue(int[] prices, int length) {
 
-		if (length == 0) {
-			return 0;
-		}
+		int[] dp = new int[length + 1];
 
-		int max = 0;
+		for (int l = 1; l <= length; l++) {
 
-		for (int cut = 1; cut <= length; cut++) {
-			int value = prices[cut - 1] + findMaxValue(prices, length - cut);
+			for (int cut = 1; cut <= l; cut++) {
+				int value = prices[cut - 1] + dp[l - cut];
 
-			System.out.println(String.format("l-cut=%d, value = %d", length - cut, value));
+				System.out.println(String.format("l-cut=%d, value = %d", (l - cut), value));
 
-			if (value > max) {
-				max = value;
+				if (value > dp[l]) {
+					dp[l] = value;
+				}
 			}
 		}
 
-		return max;
+		return dp[length];
 	}
 
 	public static void main(String[] args) {
-		RodCutting sol = new RodCutting();
+		RodCuttingDP sol = new RodCuttingDP();
 
 		int[] prices;
 		int length;
