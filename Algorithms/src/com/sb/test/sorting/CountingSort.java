@@ -41,7 +41,7 @@ public class CountingSort {
 	public static void main(String args[]) {
 
 		Random r = new Random();
-		int len = 1000;
+		int len = 1000000;
 //		int len = 10;
 
 		int[] arr = new int[len];
